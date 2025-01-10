@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Prometheus service configuration
+  prometheus:
+    image: prom/prometheus  # Use the official Prometheus image
+    container_name: prometheus  # Name the container "prometheus"
+    ports:
+      - "9090:9090"  # Map port 9090 on the host to port 9090 in the container
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Mount the prometheus.yml configuration file
+    restart: unless-stopped  # Always restart the container unless it is explicitly stopped
+
+  # Pushgateway service configuration
+  prometheus_pushgateway:
+    image: prom/pushgateway  # Use the official Pushgateway image
+    container_name: prometheus_pushgateway  # Name the container "prometheus_pushgateway"
+    ports:
+      - "9091:9091"  # Map port 9091 on the host to port 9091 in the container
+    restart: unless-stopped  # Always restart the container unless it is explicitly stopped

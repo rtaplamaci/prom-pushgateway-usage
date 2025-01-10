@@ -1,0 +1,24 @@
+# Run prometheus container
+docker run --rm --detach \
+    --name prometheus \
+    --publish 9090:9090 \
+    --volume "$(pwd)"/prometheus.yml:/etc/prometheus/prometheus.yml \
+    prom/prometheus
+
+# Run Prometheus Push Gateway
+docker run --rm --detach \
+    --name prometheus_pushgateway \
+    --publish 9091:9091 \
+    prom/pushgateway
+
+# Create Python VENV
+python3 -m venv venv
+
+# Activate Python VENV
+source venv/bin/activate
+
+# Check the env usage
+which python3
+
+# Deactivate Python VENV
+deactivate

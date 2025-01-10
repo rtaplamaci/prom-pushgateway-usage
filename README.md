@@ -1,5 +1,7 @@
 # Push Metrics to Prometheus using Prometheus Pushgateway
 
+![Prometheus Pushgateway usage flow](img/flow.png)
+
 ## Prometheus Pushgateway
 
 The Prometheus Pushgateway is an intermediary service that allows ephemeral and batch jobs to push their metrics to Prometheus. It is useful for scenarios where the application or job does not run continuously and cannot be scraped by Prometheus directly.
